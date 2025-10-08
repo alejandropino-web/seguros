@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Cálculo de ganancias por seguros con EcuaSIGAD</title>
+  <title>Cálculo de ganancias por seguros</title>
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
   <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
   <style>
@@ -32,19 +32,19 @@
             <div class="col-12"><strong>Paso 1 — Valores base</strong></div>
             <div class="col-md-6">
               <label class="form-label">Valor FOB del trámite (USD)</label>
-              <input type="number" step="0.01" id="C4" class="form-control input-yellow" value="50000" min="0">
+              <input type="number" step="0.01" id="C4" class="form-control input-yellow" value="1000" min="0">
               <div class="form-text">Ingrese el valor FOB en dólares estadounidenses.</div>
             </div>
             <div class="col-md-6">
               <label class="form-label">Valor Flete del trámite (USD)</label>
-              <input type="number" step="0.01" id="C5" class="form-control input-yellow" value="2500" min="0">
+              <input type="number" step="0.01" id="C5" class="form-control input-yellow" value="200" min="0">
               <div class="form-text">Ingrese el costo de flete estimado en USD.</div>
             </div>
 
             <div class="col-12"><strong>Paso 2 — Tasas</strong></div>
             <div class="col-md-6">
               <label class="form-label">Tasa NETA (%) que ofreceré al cliente</label>
-              <input type="number" step="0.0001" id="C6" class="form-control input-yellow" value="0.35" min="0">
+              <input type="number" step="0.0001" id="C6" class="form-control input-yellow" value="1.5" min="0">
               <div class="form-text">Tasa porcentual (por ejemplo, 1.5 = 1.5%).</div>
             </div>
 
@@ -90,12 +90,12 @@
 
             <div class="col-12 text-end">
               <button type="button" id="resetBtn" class="btn btn-outline-secondary me-2">Restablecer</button>
-
+              <button type="button" id="copyBtn" class="btn btn-primary">Copiar código HTML</button>
             </div>
           </form>
 
           <hr>
-          
+          <div class="small-muted">Notas: las fórmulas replican las del archivo XLS original.</div>
         </div>
       </div>
     </div>
@@ -151,5 +151,13 @@ $(function(){
 });
 </script>
 
+  <div class="text-center my-4">
+    <a href="https://wa.me/593995202570" target="_blank" class="btn btn-success m-2">
+      💬 Contactar a Walther Chaglia
+    </a>
+    <a href="https://wa.me/593992908787" target="_blank" class="btn btn-success m-2">
+      💬 Contactar a Fernando López
+    </a>
+  </div>
 </body>
 </html>

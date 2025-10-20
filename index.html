@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Cálculo de ganancias por seguros</title>
+  <title>4 pasos para saber cómo y cuánto puede ganar con seguros - WiseTech Global</title>
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
   <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
   <style>
@@ -24,7 +24,7 @@
     <div class="col-lg-9">
       <div class="card shadow-sm">
         <div class="card-body">
-          <h3 class="wisetech-header mb-1">Cálculo de ganancias por seguros</h3>
+          <h3 class="wisetech-header mb-1">4 pasos para saber cómo y cuánto puede ganar con seguros</h3>
           <p class="small-muted">Herramienta basada en el modelo EcuaSIGAD. Las celdas en amarillo son editables.</p>
 
           <hr>
@@ -44,18 +44,15 @@
             <div class="col-12"><strong>Paso 2 — Tasas</strong></div>
             <div class="col-md-6">
               <label class="form-label">Tasa NETA (%) que ofreceré al cliente</label>
-              <input type="number" step="0.0001" id="C6" class="form-control input-yellow" value="1.5" min="0">
+              <input type="number" step="0.0001" id="C6" class="form-control input-yellow" value="1.5" min="0.17">
+              <div class="form-text text-danger d-none" id="rateWarning">La tasa no puede ser menor a 0.17%</div>
               <div class="form-text">Tasa porcentual (por ejemplo, 1.5 = 1.5%).</div>
             </div>
 
             <div class="col-12 mt-2"><strong>Resultados</strong></div>
 
             <div class="col-md-6">
-              <label class="form-label">Seguro según tasa a cliente</label>
-              <div id="C7" class="form-control-plaintext border rounded p-2 bg-white monetario">$0.00</div>
-            </div>
-            <div class="col-md-6">
-              <label class="form-label">Monto asegurable CyF +15%</label>
+              <label class="form-label">Monto asegurable CIF +15%</label>
               <div id="C8" class="form-control-plaintext border rounded p-2 bg-white monetario">$0.00</div>
             </div>
 
@@ -90,12 +87,17 @@
 
             <div class="col-12 text-end">
               <button type="button" id="resetBtn" class="btn btn-outline-secondary me-2">Restablecer</button>
-              <!--<button type="button" id="copyBtn" class="btn btn-primary">Copiar código HTML</button>-->
+              <button type="button" id="copyBtn" class="btn btn-primary">Copiar código HTML</button>
+            </div>
+
+            <div class="col-12 text-center mt-4">
+              <a href="https://wa.me/593995202570" target="_blank" class="btn btn-success m-2">Contactar a Walther Chaglia</a>
+              <a href="https://wa.me/593992908787" target="_blank" class="btn btn-success m-2">Contactar a Fernando López</a>
             </div>
           </form>
 
           <hr>
-          <!--<div class="small-muted">Notas: las fórmulas replican las del archivo XLS original.</div>-->
+          <div class="small-muted">Notas: las fórmulas replican las del archivo XLS original.</div>
         </div>
       </div>
     </div>
@@ -111,18 +113,25 @@ function fmtUSD(n){
 function calcAll(){
   const C4 = Math.max(0, parseFloat($('#C4').val())||0);
   const C5 = Math.max(0, parseFloat($('#C5').val())||0);
-  const C6 = Math.max(0, parseFloat($('#C6').val())||0);
+  let C6 = Math.max(0.17, parseFloat($('#C6').val())||0);
   const C14 = Math.max(0, parseFloat($('#C14').val())||0);
 
-  const C7 = ((C4 + C5) * C6) / 100.0;
-  const C8 = (C4 + C5 + C7) * 1.15;
+  if(parseFloat($('#C6').val()) < 0.17){
+    $('#rateWarning').removeClass('d-none');
+    $('#C6').addClass('is-invalid');
+    $('#C6').val(0.17);
+  } else {
+    $('#rateWarning').addClass('d-none');
+    $('#C6').removeClass('is-invalid');
+  }
+
+  const C8 = (C4 + C5 + ((C4 + C5) * C6 / 100)) * 1.15;
   const C9 = (C8 * C6) / 100.0;
   const C10 = (C8 * 0.16) / 100.0;
   const C11 = C9 - C10;
   const C12 = (C9 === 0) ? 0 : (C11 / C9);
   const C15 = C11 * C14;
 
-  $('#C7').text(fmtUSD(C7));
   $('#C8').text(fmtUSD(C8));
   $('#C9').text(fmtUSD(C9));
   $('#C10').text(fmtUSD(C10));
@@ -136,9 +145,9 @@ $(function(){
   $('#C4,#C5,#C6,#C14').on('input change', calcAll);
 
   $('#resetBtn').on('click', function(){
-    $('#C4').val('0');
-    $('#C5').val('0');
-    $('#C6').val('0.35');
+    $('#C4').val('1000');
+    $('#C5').val('200');
+    $('#C6').val('1.5');
     $('#C14').val('10');
     calcAll();
   });
@@ -151,13 +160,5 @@ $(function(){
 });
 </script>
 
-  <div class="text-center my-4">
-    <a href="https://wa.me/593995202570" target="_blank" class="btn btn-success m-2">
-      💬 Contactar a Walther Chaglia
-    </a>
-    <a href="https://wa.me/593992908787" target="_blank" class="btn btn-success m-2">
-      💬 Contactar a Fernando López
-    </a>
-  </div>
 </body>
 </html>

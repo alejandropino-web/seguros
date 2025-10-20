@@ -31,19 +31,19 @@
           <form id="calcForm" class="row gy-3">
             <div class="col-12"><strong>Paso 1 — Valores base</strong></div>
             <div class="col-md-6">
-              <label class="form-label">Valor FOB del trámite (USD)</label>
+              <label class="form-label">Indicar valor de la mercancía (USD)</label>
               <input type="number" step="0.01" id="C4" class="form-control input-yellow" value="1000" min="0">
               <div class="form-text">Ingrese el valor FOB en dólares estadounidenses.</div>
             </div>
             <div class="col-md-6">
-              <label class="form-label">Valor Flete del trámite (USD)</label>
+              <label class="form-label">Indicar valor del Flete (USD)</label>
               <input type="number" step="0.01" id="C5" class="form-control input-yellow" value="200" min="0">
               <div class="form-text">Ingrese el costo de flete estimado en USD.</div>
             </div>
 
-            <div class="col-12"><strong>Paso 2 — Tasas</strong></div>
+            <div class="col-12"><strong>Paso 2 — Tasas de seguro negociadas con el cliente</strong></div>
             <div class="col-md-6">
-              <label class="form-label">Tasa NETA (%) que ofreceré al cliente</label>
+              <label class="form-label">Tasa NETA (%) que la agencia cobrará al cliente</label>
               <input type="number" step="0.0001" id="C6" class="form-control input-yellow" value="1.5" min="0.17">
               <div class="form-text text-danger d-none" id="rateWarning">La tasa no puede ser menor a 0.17%</div>
               <div class="form-text">Tasa porcentual (por ejemplo, 1.5 = 1.5%).</div>
@@ -57,26 +57,26 @@
             </div>
 
             <div class="col-md-6">
-              <label class="form-label">Valor de venta NETO del seguro al cliente</label>
+              <label class="form-label">Valor NETO del seguro al cliente</label>
               <div id="C9" class="form-control-plaintext border rounded p-2 bg-white monetario">$0.00</div>
             </div>
             <div class="col-md-6">
-              <label class="form-label">Valor NETO que mi Agencia descuenta</label>
+              <label class="form-label">¿Cuánto le costará este seguro a la Agencia?</label>
               <div id="C10" class="form-control-plaintext border rounded p-2 bg-white monetario">$0.00</div>
             </div>
 
             <div class="col-md-6">
-              <label class="form-label">Comisión que obtiene mi Agencia</label>
+              <label class="form-label">Ganancia de la agencia por este seguro</label>
               <div id="C11" class="form-control-plaintext border rounded p-2 bg-white monetario">$0.00</div>
             </div>
             <div class="col-md-6">
-              <label class="form-label">Tasa de comisión efectiva</label>
+              <label class="form-label">Comisión efectiva</label>
               <div id="C12" class="form-control-plaintext border rounded p-2 bg-white">0 %</div>
             </div>
 
             <div class="col-12"><strong>Paso 4 — Volumen</strong></div>
             <div class="col-md-6">
-              <label class="form-label">Cantidad de trámites mensuales</label>
+              <label class="form-label">Trámites con seguros similares al mes</label>
               <input type="number" step="1" id="C14" class="form-control input-yellow" value="10" min="0">
               <div class="form-text">Número estimado de trámites por mes.</div>
             </div>
